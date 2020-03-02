@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Progate</title>
+    <style media="screen">
+      .mydiv{
+        overflow: scroll
+      }
+      .about{
+        width:1000px;
+        height:200px;
+        align: center;
+        padding-left:300px;
+
+        text-align: justify;
+      }
+    </style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+  </head>
+  <body>
+    <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        
+      </div>
+      <ul class="nav navbar-nav">
+        {% load static %}
+        <li><a href={% url "home" %}><img  src="{% static 'images/Hemacare.png' %}" ></li></a>
+        <li ><a href={% url "seek" %}>Seek Blood</a></li>
+        <li><a href={% url "sign_in" %}>Donate</a></li>
+        <li><a href={% url "login" %}>Login</a></li>
+      
+        <li><a href={% url "eligibility" %}>Eligibilty Criteria</a></li>
+        <li><a href={% url "contact" %}>Contact Us</a></li>
+        <li><a href={% url "about_us" %}>About Us</a></li>
+      </ul>
+
+    </div>
+  </nav>
+    <div class="about">
+    <h1 class="style">ABOUT US</h1>
+    <link rel="stylesheet" href="t&c.css">
+    <p class="paragraph">A blood donation occurs when a person voluntarily has blood drawn and used for transfusions and/or made into biopharmaceutical medications by a process called fractionation (separation of whole-blood components). Donation may be of whole blood (WB), or of specific components directly (the latter called apheresis). Blood banks often participate in the collection process as well as the procedures that follow it.
+    <p class="paragraph">Universally, 'Blood' is recognized as the most precious element that sustains life. It saves innumerable lives across the world in a variety of conditions. Once in every 2- seconds, someone, somewhere is desperately in need of blood. More than 29 million units of blood components are transfused every year. The need for blood is great - on any given day, approximately 39,000 units of Red Blood Cells are needed. Each year, we could meet only up to 1% (approx) of our nation’s demand for blood transfusion.</p>
+    <p class="paragraph">Despite the increase in the number of donors, blood remains in short supply during emergencies, mainly attributed to the lack of information and accessibility. We positively believe this tool can overcome most of these challenges by effectively connecting the blood donors with the blood recipients.</p>
+    <p class="paragraph">Potential donors are evaluated for anything that might make their blood unsafe to use. The screening includes testing for diseases that can be transmitted by a blood transfusion, including HIV and viral hepatitis. The donor must also answer questions about medical history and take a short physical examination to make sure the donation is not hazardous to his or her health. How often a donor can give varies from days to months based on what he or she donates and the laws of the country where the donation takes place.</p>
+    </div>
+  </body>
+</html>

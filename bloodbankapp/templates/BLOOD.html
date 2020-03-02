@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>{% block title %}Blood donation{% endblock %}</title>
+
+    
+    {% load static %}
+    <script src="{% static 'javascript/blood.js' %}"></script>
+    <link rel='stylesheet' href="{% static 'css/BLOOD.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        
+      </div>
+      <ul class="nav navbar-nav">
+        <li><a href={% url "home" %}><img  src="{% static 'images/Hemacare.png' %}" ></li></a>
+        <li ><a href={% url "seek" %}>Seek Blood</a></li>
+        <li><a href={% url "sign_in" %}> Donate</a></li>
+        <li><a href={% url "login" %}>Login</a></li>
+        <li><a href='http://127.0.0.1:8000/admin/'>Admin</a></li>
+        <li><a href={% url "contact" %}>Contact Us</a></li>
+        <li><a href={% url "about_us" %}>About Us</a></li>
+      </ul>
+
+    </div>
+  </nav>
+  <div class="w3-content w3-section" style="max-width:100%">
+  <center>
+    {% load static %}
+  <img class="mySlides" src="{% static 'images/img2.png' %}" style="width:100%" style="height:15px">
+  <img class="mySlides" src="{% static 'images/pic6.jpg' %}" style="width:100%" style="height:15px">
+  <img class="mySlides" src="{% static 'images/img11.jpg' %}" style="width:100%" style="height:15px">
+  </center>
+</div>
+
+<div class="container">
+    {% block content %}`
+    {% endblock %}
+   </div>
+
+
+    <script>
+    var myIndex = 0;
+    carousel();
+
+    function carousel() {
+      var i;
+      var x = document.getElementsByClassName("mySlides");
+      for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none";
+      }
+      myIndex++;
+      if (myIndex > x.length) {myIndex = 1}
+      x[myIndex-1].style.display = "block";
+      setTimeout(carousel, 2000); // Change image every 2 seconds
+    }
+    </script>
+    
+</body>
+</html>

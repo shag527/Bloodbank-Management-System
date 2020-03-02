@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Progate</title>
+    <style media="screen">
+      .mydiv{
+        overflow: scroll;
+      }
+    </style>
+    {% load static %}
+    <link rel='stylesheet' href="{% static 'css/t&c.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+  </head>
+  <body>
+    <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="{% url "home" %}">Blood Bank</a>
+      </div>
+      <ul class="nav navbar-nav">
+        {% load static %}
+        <li><a href={% url "home" %}><img  src="{% static 'images/Hemacare.png' %}" ></li></a>
+        <li ><a href={% url "seek" %}>Seek Blood</a></li>
+        <li><a href={% url "sign_in" %}>Donate</a></li>
+        <li><a href={% url "login" %}>Login</a></li>
+      
+        <li><a href={% url "eligibility" %}>Eligibilty Criteria</a></li>
+        <li><a href={% url "contact" %}>Contact Us</a></li>
+        <li><a href={% url "about_us" %}>About Us</a></li>
+      </ul>
+
+    </div>
+  </nav>
+    <div class="mydiv">
+    <h1 class="style">TERMS AND CONDITIONS</h1>
+    <h2>PRIVACY POLICY</h2>
+    <link rel="stylesheet" href="t&c.css">
+    <p class="paragraph">Our team is committed to protecting the rights of all visitors to our website. We recognize our obligation to keep personal information secure and have created this privacy statement to share our information gathering and dissemination practices for this website. We also assure you that none of your registered information will be shared with any third parties outside the company . However, the information that you have agreed to broadcast during the process of registration will be available for the public view.</p>
+    <h2>COLLECTION AND USE OF ONLINE INFORMATION</h2>
+    <p class="paragraph">Our web server automatically collects your IP address when you visit our site. (Your IP address is your computer's unique address that lets other computers attached to the Internet know where to send data, but does not identify you individually). We use your IP address to help diagnose problems with our server and to compile statistics on site usage. We do not make your IP address available to anyone. From time to time, we may also use cookies on your web browser to store some of the user preference, this cookie will communicate only with this website and if you wish not have them saved, you may have them deleted from your computer using your browser’s settings. When you visit certain areas of this site including the registration form, you may be asked to provide personal information (such as name, address, e-mail address, and phone number) that we need to process your request. In the event that you decline to provide such information, we will be unable to process your request. Still, we invite you to continue to visit the site and take advantage of the wealth of information it offers. Every site user who provides us with personal information has the right to inspect, amend, or correct his/her own personal information. You may do so either online by logging in, if you are a registered user, or through simply contacting us using the details posted on the ‘contact us’ page on our website. </p>
+    <h2>TERMS OF USE</h2>
+    <p class="paragraph">This is purely a non-profit website directed towards the welfare of our community. Any individual or entity that enrolls for our service does so with his/her own will and at no obligation to any one else or any other entity. We seriously condemn the use of this website for any commercial purpose, including solicitation for commercial gain based on the contact details posted by the registered users. We take the privacy of our users very seriously and therefore reserve the right to pursue a legal action against the individuals or entities violating our terms of use. </p>
+    <h2>COMPLAINTS PROCEDURE</h2>
+    <p class="paragraph">Anyone who experiences a problem with the service provided by us should raise the matter directly using our online contact us form, giving sufficient information to locate the material (such as an url) and clearly outlining the grounds for complaint. Our team will approach the individual responsible for the material in question with a view to resolving the matter to the satisfaction of the complainant. The formal complaints procedure should only be used where the complainant feels that the nature of the complaint is too serious to be dealt with informally, or where a satisfactory conclusion has not been reached after following the informal procedure. A formal complaint should be made in writing to our team, who will acknowledge receipt and ensure that the matter is looked into at the earliest possible. An initial response to any complaint can be expected within seven days of its receipt; a full and considered response to the complaint should be completed within 30 days and any subsequent remedy implemented with the minimum of delay.</p>
+
+
+  </body>
+</html>

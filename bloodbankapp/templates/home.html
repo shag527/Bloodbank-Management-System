@@ -1,0 +1,80 @@
+{% extends 'BLOOD.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>W3.CSS</title>
+{% load static %}
+
+    <script src="{% static 'javascript/blood.js' %}"></script>
+    <link rel='stylesheet' href="{% static 'css/BLOOD.css' %}">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta content="text/html; charset=iso-8859-2" http-equiv="Content-Type">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<style>
+.mySlides {display:none;}
+</style>
+</head>
+
+<body>
+
+
+<div class="w3-content w3-section" style="max-width:500px">
+
+
+</div>
+
+<script>
+var myIndex = 0;
+carousel();
+
+function carousel() {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+  myIndex++;
+  if (myIndex > x.length) {myIndex = 1}
+  x[myIndex-1].style.display = "block";
+  setTimeout(carousel, 2000); // Change image every 2 seconds
+}
+</script>
+
+</body>
+</html>
+<div class="page">
+      <header class="header">
+
+      </header>
+      <main class="content">
+          <div class="article">
+              <section class="part">
+                  <h1>Blood is meant to circulate. Pass it around.</h1>
+                  <p>Their are number of countries who don’t have adequate number<br /> of blood suppliers and face the challenge of blood supply.
+                     We<br /> are trying to make available adequate blood to the needy<br /> patients all over the world.</p>
+                  <a id="donate" class="button" href={% url "sign_in" %}>I want to donate</a>
+
+              </section>
+              <div class="wrapper">
+                  <img  id="illustration" src="https://bit-php.herokuapp.com/blood/images/donate.svg" alt="Blood">
+              </div>
+          </div>
+          </br></br>
+          <center>
+          <div style="background-color: lightblue ;
+          max-width: "100%" >
+          </br>
+  <h5>SHORT ABOUT US</h5>
+ </br>
+<p style="color: black">Register to be a blood donor, give blood and save lives. Find out more about<a href="https://en.wikipedia.org/wiki/Blood_donation" style="color:blue"> blood donation</a>.</p>
+</br>
+<p style="color: black">Copyright © 2019 - Hemacare- All Rights Reserved</p>
+</br></br>
+</div>
+</center>
+      </main>
+  </div>
+{% endblock %}

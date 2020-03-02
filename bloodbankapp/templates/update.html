@@ -1,0 +1,104 @@
+<form action="#" method="POST" id="donor">
+  {% csrf_token %}
+  <div class="container">
+    <p>Please check and update details if necessary</p>
+    <hr>
+
+    <label for="email"><b>Username</b></label>
+    <input type="text" placeholder={{user.name}} name="person_name" required>
+
+    <label for="age"><b>Age</b></label>
+    <input type="text" placeholder={{user.age}} name="age" required>
+
+      <label for="Gender"><b>Gender</b></label><br><br>
+ {% if user.gender=="Male" %}
+ <input type="radio" name="sex" value="Male" checked="checked"> Male<br>
+ {% else %}
+ <input type="radio" name="sex" value="Male"> Male<br>
+ {% if user.gender=="Female" %}
+ <input type="radio" name="sex" value="Female" checked="checked"> Female<br>
+ {% else %}
+  <input type="radio" name="sex" value="Female"> Female<br>
+ {% if user.gender=="Other" %}
+ <input type="radio" name="sex" value="Other" checked="checked"> Other<br>
+ {% else %}
+ <input type="radio" name="sex" value="Other"> Other<br>
+ {% endif %}
+
+ <br>
+ <label for="district"><b>District</label>
+ <input type="text" placeholder={{user.district}} name="district" required>
+
+ <label for="address"><b>Address</label><br><br>
+   <textarea type = "text" rows = "6" placeholder={{user.address}} cols = "140" name = "address" style="background-color:#f1f1f1;">    </textarea><br><br>
+
+ <label for="pincode"><b>Pincode</label><br><br>
+ <input type="number" placeholder={{user.pincode}} name="pincode" maxlength="200" required>
+<br><br>
+
+<label for="Contact Number"><b>Contact Number</label><br><br>
+<input type="number" placeholder={{user.contact_number}} name="contact_number" maxlength="10" required>
+<br><br>
+
+<label for="email"><b>Email</label><br><br>
+<input type="email" placeholder={{user.email}} name="email" maxlength="100" required>
+<br><br>
+
+<label for="illness"><b>Blood Group</label><br><br>
+<select name="blood_group" form="donor">
+  {% if user.blood_group=="O Positive"}
+  <option value="O Positive" selected="selected">O+</option>
+  {% else %}
+  {% if user.blood_group=="O Negative"}
+  <option value="O Negative" selected="selected">O-</option>
+  {% else %}
+  <option value="O Negative">O-</option>
+  {% if user.blood_group=="A Positive"}
+  <option value="A Positive" selected="selected">A+</option>
+  {% else %}
+  <option value="A Positive">A+</option>
+  {% if user.blood_group=="A Negative"}
+  <option value="A Negative" selected="selected">A-</option>
+  {% else %}
+  <option value="A Negative">A-</option>
+  {% if user.blood_group=="B Positive"}
+  <option value="B Positive" selected="selected">B+</option>
+  {% else %}
+  <option value="B Positive">B+</option>
+  {% if user.blood_group=="B Negative"}
+  <option value="B Negative" selected="selected">B-</option>
+  {% else %}
+  <option value="B Negative">B-</option>
+  {% if user.blood_group=="AB Positive"}
+  <option value="AB Positive" selected="selected">AB+</option>
+  {% else %}
+  <option value="AB Positive">AB+</option>
+  {% if user.blood_group=="AB Negative"}
+  <option value="AB Negative" selected="selected">AB-</option>
+  {% else %}
+  <option value="AB Negative">AB-</option>
+  <br>
+</select><br><br>
+
+<label for="date"><b>Last donated Date</label><br><br>
+<input type="date" name="last_donated_date" required style="font-family: Arial, Helvetica, sans-serif; background-color:#f1f1f1;"
+width="100%" height="50px" value={{user.last_donated_date}}><br><br>
+
+
+<label for="illness"><b>Major Illness, if any</label><br>
+<input type="text" placeholder="Enter major illness, if any" name="major_illness" required>
+
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder={{user.major_illness}} name="psw" required>
+
+    <hr>
+
+    <button type="submit" class="registerbtn">Update</button>
+  </div>
+<div class="eligible">
+<center>  <a href={% url "eligibility" %}>Eligibility Criteria</a> for blood donation</center>
+</div>
+  <div class="container signin">
+    <p>Already have an account? <a href={% url "sign_in" %}>Sign in</a>.</p>
+  </div>
+</form>

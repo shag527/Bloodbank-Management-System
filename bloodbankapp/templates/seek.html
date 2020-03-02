@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+  {% load static %}
+  <link rel='stylesheet' href="{% static 'css/donor.css' %}">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        
+      </div>
+      <ul class="nav navbar-nav">
+        <li><a href={% url "home" %}><img  src="{% static 'images/Hemacare.png' %}" ></li></a>
+        <li ><a href={% url "seek" %}>Seek Blood</a></li>
+        <li><a href={% url "sign_in" %}>Donate</a></li>
+        <li><a href={% url "login" %}>Login</a></li>
+        
+        <li><a href={% url "eligibility" %}>Eligibilty Criteria</a></li>
+        <li><a href={% url "contact" %}>Contact Us</a></li>
+        <li><a href={% url "about_us" %}>About Us</a></li>
+      </ul>
+
+    </div>
+  </nav>
+<form method="POST" id="seek">
+  {% csrf_token %}
+  <div class="container">
+    <h1><center>Request Blood</center></h1><br>
+    <p>Please fill in this form to generate a request.</p>
+    <hr>
+
+    <label for="attendantname"><b>Attendant's name</b></label>
+    <input type="text" placeholder="Enter Attendant's name" name="attendantname" required>
+
+    <label for="Contact Number"><b>Contact Number</label><br><br>
+    <input type="number" placeholder="Enter you contact number" name="contactnumber" maxlength="10" required>
+    <br><br>
+    <hr>
+    <label for="patientname"><b>Patient's name</b></label>
+    <input type="text" placeholder="Enter Patient's name" name="patientname" required>
+
+      <label for="Gender"><b>Gender</b></label><br><br>
+ <input type="radio" name="gender" value="male"> Male<br>
+ <input type="radio" name="gender" value="female"> Female<br>
+ <input type="radio" name="gender" value="other"> Other<br><br>
+
+ <label for="age"><b>Age</b></label>
+ <input type="text" placeholder="Enter Age" name="age" required>
+
+ <br>
+
+<label for="bloodgroup"><b>Blood Group</label><br><br>
+<select name="bloodgroup" form="seek">
+  <option value="O Positive">O+</option>
+  <option value="O Negative">O-</option>
+  <option value="A Positive">A+</option>
+  <option value="A Negative">A-</option>
+  <option value="B Positive">B+</option>
+  <option value="B Negative">B-</option>
+  <option value="AB Positive">AB+</option>
+  <option value="AB Negative">AB-</option>
+  <br>
+</select><br><br>
+
+<label for="quantity"><b>Quantity (in mL)</label><br><br>
+<input type="number" placeholder="Blood Quantity" name="quantity" maxlength="10" required>
+<br><br>
+
+<label for="hospital"><b>Hospital Name</label><br>
+<input type="text" placeholder="Hospital Name" name="hospital" required>
+
+<label for="date"><b>Deadline</label><br><br>
+<input type="date" name="date" required style="font-family: Arial, Helvetica, sans-serif; background-color:#f1f1f1;"
+width="100%" height="50px"><br><br>
+
+    <button type="submit" class="registerbtn">Request</button>
+  </div>
+
+</form>
+
+</body>
+</html>

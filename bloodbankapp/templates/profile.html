@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+ {% load static %}
+  <link rel='stylesheet' href="{% static 'css/donor.css' %}">
+  <link rel='stylesheet' href="{% static 'css/base.css' %}">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+       
+      </div>
+      <ul class="nav navbar-nav">
+        {% load static %}
+        <li><a href={% url "home" %}><img  src="{% static 'images/Hemacare.png' %}" ></li></a>
+        <li ><a href={% url "seek" %}>Seek Blood</a></li>
+        <li><a href={% url "sign_in" %}>Donate</a></li>
+        <li><a href={% url "login" %}>Login</a></li>
+        
+        <li><a href={% url "eligibility" %}>Eligibilty Criteria</a></li>
+        <li><a href={% url "contact" %}>Contact Us</a></li>
+        <li><a href={% url "about_us" %}>About Us</a></li>
+      </ul>
+
+    </div>
+  </nav>
+
+ <div class="myimage">
+ 
+    {% if user %}
+    <div >
+    <h1 style="color: white; background-color: lightblue"><center>Welcome {{user.username}}</center></h1></br>
+{% if requests %}
+<h4 style="color: brown"></br></br></br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Recent Requests</h4>
+  <form action = "{% url 'favourite' %}" method="post">
+    {% csrf_token %}
+    {% for requesta in requests %}
+      {% if user.b_request_id != requesta %}
+      <table bgcolor="red" >
+        <label ="requesta{{forloop.counter}}">
+          <tr>
+          
+       
+          <td ><a href="{{requesta.id}}" >&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;{{requesta}} </a></td>
+</tr>
+        </label>
+ </table>
+        {% if requesta.blood_group in donate_group %}
+        
+          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;<input type="radio" id="requesta{{forloop.counter}}" value="{{requesta.id}}" name="donate" >Donate</button></br>
+        
+{% else %}
+<b><p style="color: grey" >&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;(Blood groups are not compatible)<p></b>
+        {% endif %}
+        <br>
+
+
+      {% endif %}
+      {% endfor %}
+      
+    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;<button type="submit" style="background-color: white; color: green;">Submit</button>
+</br></br></br></br></br></br></br></br>
+   
+  </form>
+
+{% else %}
+  <b><p style="color: grey" >&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; You have no recent requests</br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br><p></p><b>
+
+{% endif %}
+</br></br>
+{% for requesta in requests %}
+  {% if user.b_request_id == requesta %}
+  <h4 style="color: brown">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; You are donating to</h4>
+    <label ="requesta{{forloop.counter}}">
+      <a href="{{requesta.id}}" >&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;{{requesta}} </a>
+      <p style="color: grey" >&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;Thanks for donating. We will update you soon.</p>
+    </label>
+    <form action="{% url 'delete' %}" method="POST">
+    {% csrf_token %}
+    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;<button type="submit" style="background-color: white; color: green;">Change</button></br></br></br>
+    </form>
+    </br></br></br>
+  </div>
+  {% endif %}
+{% endfor %}
+
+
+<div class="mybackground">
+ <button class="registerbtn" class="container signin"> <a style="color: white" href={% url "logout" %}>Logout</a></button> 
+
+</div>
+
+
+
+<div class="container">
+
+<center>
+<form action="{% url 'update' %}" method="POST" id="donor">
+  {% csrf_token %}
+  <div class="container">    
+    <h3><p>Update Your Details Here</p></center></h3>
+    <hr>
+<center><h5><a href={% url 'profile_edit' %}>Edit username and password</a></center></h5>
+    <label for="email"><b>Full Name</b></label>
+    <input type="text" name="person_name" value={{user.name}}>
+
+    <label for="age"><b>Age</b></label>
+    <input type="text" value={{user.age}} name="age">
+
+      <label for="Gender"><b>Gender</b></label><br><br>
+  {% if user.gender == "Male" %}
+  <input type="radio" name="sex" value="Male" checked="checked"> Male<br>
+  {% else %}
+  <input type="radio" name="sex" value="Male"> Male<br>
+  {% endif %}
+  {% if user.gender == "Female" %}
+  <input type="radio" name="sex" value="Female" checked="checked"> Female<br>
+  {% else %}
+    <input type="radio" name="sex" value="Female"> Female<br>
+    {% endif %}
+  {% if user.gender == "Other" %}
+  <input type="radio" name="sex" value="Other" checked="checked"> Other<br>
+  {% else %}
+  <input type="radio" name="sex" value="Other"> Other<br>
+  {% endif %}
+
+  <br>
+  <label for="district"><b>District</label>
+  <input type="text" value={{user.district}} name="district">
+
+  <label for="address"><b>Address</label><br><br>
+    <textarea type = "text" rows = "6" placeholder={{user.address}} cols = "140" name = "address" style="background-color:#f1f1f1;">{{user.address}}</textarea><br><br>
+
+  <label for="pincode"><b>Pincode</label><br><br>
+  <input type="number" value={{user.pincode}} name="pincode" maxlength="200">
+  <br><br>
+
+  <label for="Contact Number"><b>Contact Number</label><br><br>
+  <input type="number" value={{user.contact_number}} name="contact_number" maxlength="10">
+  <br><br>
+
+  <label for="email"><b>Email</label><br><br>
+  <input type="email" value={{user.email}} name="email" maxlength="100">
+  <br><br>
+
+  <label for="illness"><b>Blood Group</label><br><br>
+  <select name="blood_group" form="donor">
+    {% if user.blood_group == "O Positive" %}
+    <option value="O Positive" selected="selected">O+</option>
+    {% else %}
+    <option value="O Positive">O+</option>
+    {% endif %}
+    {% if user.blood_group == "O Negative" %}
+    <option value="O Negative" selected="selected">O-</option>
+    {% else %}
+    <option value="O Negative">O-</option>
+    {% endif %}
+    {% if user.blood_group == "A Positive" %}
+    <option value="A Positive" selected="selected">A+</option>
+    {% else %}
+    <option value="A Positive">A+</option>
+    {% endif %}
+    {% if user.blood_group == "A Negative" %}
+    <option value="A Negative" selected="selected">A-</option>
+    {% else %}
+    <option value="A Negative">A-</option>
+    {% endif %}
+    {% if user.blood_group == "B Positive" %}
+    <option value="B Positive" selected="selected">B+</option>
+    {% else %}
+    <option value="B Positive">B+</option>
+    {% endif %}
+    {% if user.blood_group == "B Negative" %}
+    <option value="B Negative" selected="selected">B-</option>
+    {% else %}
+    <option value="B Negative">B-</option>
+    {% endif %}
+    {% if user.blood_group == "AB Positive" %}
+    <option value="AB Positive" selected="selected">AB+</option>
+    {% else %}
+    <option value="AB Positive">AB+</option>
+    {% endif %}
+    {% if user.blood_group == "AB Negative" %}
+    <option value="AB Negative" selected="selected">AB-</option>
+    {% else %}
+    <option value="AB Negative">AB-</option>
+    {% endif %}
+    <br>
+  </select><br><br>
+
+  <label for="date"><b>Last donated Date</label><br><br>
+  <input type="date" name="last_donated_date" value={{user.last_donated_date}} style="font-family: Arial, Helvetica, sans-serif; background-color:#f1f1f1;"
+  width="100%" height="50px" ><br><br>
+
+
+  <label for="illness"><b>Major Illness, if any</label><br>
+  <input type="text" value={{user.major_illness}} name="major_illness">
+
+    <hr>
+
+    <button type="submit" class="registerbtn">Update</button>
+  </div>
+
+  
+  
+  </div>
+  </form>
+{% endif %}
+
+  
+
+</div>
+
+
+
+</body>
+</html>
+
+
+
+

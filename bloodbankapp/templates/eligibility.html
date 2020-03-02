@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Progate</title>
+    <style media="screen">
+      .mydiv{
+        overflow: scroll
+      }
+      .signback{
+
+          padding: 16px;
+          background-color: white;
+
+      }
+
+    </style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+  </head>
+
+  <body>
+    <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        
+      </div>
+      <ul class="nav navbar-nav">
+        {% load static %}
+        <li><a href={% url "home" %}><img  src="{% static 'images/Hemacare.png' %}" ></li></a>
+        <li ><a href={% url "seek" %}>Seek Blood</a></li>
+        <li><a href={% url "sign_in" %}>Donate</a></li>
+        <li><a href={% url "login" %}>Login</a></li>
+        
+        <li><a href={% url "eligibility" %}>Eligibilty Criteria</a></li>
+        <li><a href={% url "contact" %}>Contact Us</a></li>
+        <li><a href={% url "about_us" %}>About Us</a></li>
+      </ul>
+
+    </div>
+  </nav>
+    <div class="mydiv">
+    <h1 class="main">GENERAL BLOOD AND PLATELET DONOR GUIDELINES</h1>
+    {% load staticfiles %}
+    <link rel='stylesheet' href="{% static 'css/font.css' %}">
+    <h2>Why guidelines are important?</h2>
+    <p class="para">Donor eligibility rules help to protect the health and safety of the donor
+      as well as the person who will receive a blood transfusion. The general
+       guidelines listed below will help you determine if you are eligible to
+       donate blood or platelets.</p>
+    <h2>General Guidelines</h2>
+    <p class="para">There are several parameters that determine the eligibility of an individual to donate blood. Guidelines laid down by the Ministry of Health, Government of India have to be followed by blood banks and organizations conducting blood donation camps.</p>
+    <ol class="para">
+      <li><strong>Age and weight</strong>- The donor must be 18–65 years old and should weigh a minimum of 50 kg.</li>
+      <li><strong>Pulse rate</strong>- Between 50 and 100 without irregularities.</li>
+      <li><strong>Hemoglobin level</strong>- A minimum of 12.5 g/dL.</li>
+      <li><strong>Blood pressure</strong>-<em>Diastolic</em>: 50–100 mm Hg,<em> Systolic</em>: 100–180 mm Hg.</li>
+      <li><strong>Body temperature</strong>- Should be normal, with an oral temperature not exceeding 37.5 °C.</li>
+      <li>The time period between successive blood donations should be more than 3 months.</li>
+      <li><strong>Overall health</strong>- The donor must be in good health, and should not be suffering from transmittable diseases.</li>
+    </ol>
+
+    <h2>What is 'Good Health'?</h2>
+    <p class="para">Good health means that you feel well and are able to carry out normal daily activities. If you have a chronic medical condition such as diabetes or high blood pressure, you may still be eligible as long as you are receiving treatment to control your condition.</p>
+    <h2>What Conditions Would Make You Ineligible to be a Donor?
+    </h2>
+    <p class="para">You will not be eligible to donate blood or platelets if :</p>
+    <ol class="para">
+      <li>You have tested positive for hepatitis B or hepatitis C, lived with or had sexual contact in the past 12 months with anyone who has hepatitis B or symptomatic hepatitis C.</li>
+      <li>You had a tattoo in the past 12 months or received a blood transfusion (except with your own blood) in the past 12 months.</li>
+      <li>You have have ever had a positive test for the AIDS virus.</li>
+      <li>You have ever used intravenous illegal drugs, even once.</li>
+      <li>You have ever used injectable drugs, including anabolic steroids, unless prescribed by a physician.</li>
+      <li>You have traveled in the past year, or lived in the past three years, in an area where malaria is endemic.</li>
+      <li>It is not necessarily surgery but the underlying condition that precipitated the surgery that requires evaluation before donation. Evaluation is on a case by case basis. You should discuss your particular situation with the health historian at the time of donation.</li>
+      <li>Persons who are pregnant are not eligible to donate. Wait 6 weeks after giving birth.</li>
+      <li>Wait 12 months if a piercing was performed using a reusable gun or any reusable instrument.
+Wait 12 months if there is any question whether or not the instruments used were single-use equipment.</li>
+      <li>A donor with an acute infection should not donate. The reason for antibiotic use must be evaluated to determine if the donor has a bacterial infection that could be transmissible by blood.Acceptable after finishing oral antibiotics for an infection (bacterial or viral). May have taken last pill on the date of donation. Antibiotic by injection for an infection acceptable 10 days after last injection. </li>
+
+    </ol>
+    <hr>
+    <h3>NOTE</h3>
+    <p class="para">Blood donors must wait at least 3 months between blood donations and 7 days before donating platelets. Platelet donors may donate once every seven days, not to exceed six times in any eight-week period, and must wait 7 days before donating blood.</p>
+    <div class="signback">
+    <p>Already have an account? <a href={% url "sign_in" %}>Sign in</a>.</p>
+       <p>New user? <a href={% url "donor" %}>Sign up</a></p>
+    </div>
+
+</div>
+  </body>
+</html>

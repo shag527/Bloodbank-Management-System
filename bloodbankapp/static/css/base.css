@@ -1,0 +1,10 @@
+.myimage{
+     background-image: url('/static/images/img1.jpg');
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-position: 90% 3%; 
+    width:100%;
+    height:50%;
+}
+
+

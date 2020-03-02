@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+ {% load static %}
+  <link rel='stylesheet' href="{% static 'css/donor.css' %}">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        
+      </div>
+      <ul class="nav navbar-nav">
+        {% load static %}
+        <li><a href={% url "home" %}><img  src="{% static 'images/Hemacare.png' %}" ></li></a>
+        <li ><a href={% url "seek" %}>Seek Blood</a></li>
+        <li><a href={% url "sign_in" %}>Donate</a></li>
+        <li><a href={% url "login" %}>Login</a></li>
+        
+        <li><a href={% url "eligibility" %}>Eligibilty Criteria</a></li>
+        <li><a href={% url "contact" %}>Contact Us</a></li>
+        <li><a href={% url "about_us" %}>About Us</a></li>
+      </ul>
+
+    </div>
+  </nav>
+<form  method="POST" >
+  {% csrf_token %}
+  <div class="container">
+    {{ form.as_p}}
+ <button type="submit" class="registerbtn">Login</button>
+ <input type="hidden" name="next" value="{% url 'profile' %}">
+</div>
+
+</form>
+
+</body>
+</html>
+
+
+
+
+
+
